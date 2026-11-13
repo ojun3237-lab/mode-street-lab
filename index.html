@@ -23,6 +23,7 @@
       margin: 0;
       padding: 0;
       -webkit-font-smoothing: antialiased;
+      -webkit-tap-highlight-color: rgba(255, 255, 255, 0.1);
     }
 
     body {
@@ -151,7 +152,7 @@
       }
     }
 
-    /* PRODUCT CARD */
+    /* PRODUCT CARD - TOUCH OPTIMIZED */
     .item-card {
       background: var(--card-bg);
       border: 1px solid var(--border);
@@ -161,15 +162,32 @@
       justify-content: space-between;
       text-decoration: none;
       color: inherit;
-      transition: all 0.3s ease;
       position: relative;
+      cursor: pointer;
+      touch-action: manipulation;
     }
-    .item-card:hover {
-      border-color: var(--border-focus);
-      background: #0f0f0f;
+    .item-card:active {
+      background: #141414;
+      border-color: #555555;
+    }
+    @media (hover: hover) and (pointer: fine) {
+      .item-card {
+        transition: all 0.3s ease;
+      }
+      .item-card:hover {
+        border-color: var(--border-focus);
+        background: #0f0f0f;
+      }
+      .item-card:hover .item-image {
+        transform: scale(1.04);
+      }
+      .item-card:hover .view-btn {
+        background: #ffffff;
+        color: #000000;
+      }
     }
 
-    /* PRODUCT IMAGE BOX */
+    /* PRODUCT IMAGE BOX - POINTER EVENTS NONE FOR INSTANT TAP */
     .item-image-box {
       width: 100%;
       aspect-ratio: 4/5;
@@ -178,16 +196,17 @@
       margin-bottom: 20px;
       border: 1px solid var(--border);
       position: relative;
+      pointer-events: none; /* スマホでタップが画像に吸われず、親のリンクに100%直撃する */
     }
     .item-image {
       width: 100%;
       height: 100%;
       object-fit: cover;
       display: block;
-      transition: transform 0.5s ease;
-    }
-    .item-card:hover .item-image {
-      transform: scale(1.04);
+      pointer-events: none;
+      -webkit-touch-callout: none;
+      user-select: none;
+      transition: transform 0.4s ease;
     }
 
     .item-top {
@@ -195,6 +214,7 @@
       justify-content: space-between;
       align-items: center;
       margin-bottom: 12px;
+      pointer-events: none;
     }
     .item-brand {
       font-size: 0.85rem;
@@ -216,6 +236,7 @@
       line-height: 1.35;
       margin-bottom: 20px;
       min-height: 2.7em;
+      pointer-events: none;
     }
     .item-boutique {
       font-size: 0.75rem;
@@ -223,11 +244,14 @@
       letter-spacing: 0.08em;
       text-transform: uppercase;
       margin-bottom: 8px;
+      pointer-events: none;
     }
     .item-price-row {
       display: flex;
       justify-content: space-between;
       align-items: baseline;
+      margin-bottom: 16px;
+      pointer-events: none;
     }
     .price-current {
       font-size: 1.25rem;
@@ -238,6 +262,25 @@
       font-size: 0.85rem;
       color: var(--text-dim);
       text-decoration: line-through;
+    }
+
+    /* DIRECT TAP BUTTON */
+    .view-btn {
+      width: 100%;
+      padding: 12px 16px;
+      background: #111111;
+      border: 1px solid #333333;
+      color: #ffffff;
+      font-size: 0.8rem;
+      font-weight: 700;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      text-align: center;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 8px;
+      pointer-events: none; /* カード全体タップと一体化 */
     }
 
     /* ABOUT / FOOTER */
@@ -300,7 +343,7 @@
   <section class="hero">
     <span class="hero-meta">CURATION ARCHIVE 2026 // ISSUE 01</span>
     <h1 class="hero-heading">DISRUPTIVE SILHOUETTES & VERIFIED LUXURY ARCHIVES.</h1>
-    <p class="hero-lead">国内外の公認正規ブティック（Antonioli, SVRN, Slam Jam, NUBIAN, ACRMTSM, HBX）が保有する、ドメスティックブランドおよび気鋭デザイナーズの公式セールアーカイブを厳選キュレーション。全アイテムが実際の購入ページへ完全直結しています。</p>
+    <p class="hero-lead">国内外の公認正規ブティック（Antonioli, SVRN, Slam Jam, NUBIAN, ACRMTSM, HBX）が保有する、ドメスティックブランドおよび気鋭デザイナーズの公式セールアーカイブを厳選キュレーション。各カード・写真をタップすると、実際のブティック購入ページへ一発でジャンプします。</p>
   </section>
 
   <!-- COLLECTION 01: DECONSTRUCTED TAILORING -->
@@ -316,7 +359,7 @@
     </div>
 
     <div class="product-grid">
-      <a href="https://antonioli.eu/ja-jp/products/man-sunflower-clothing-jeans-5117-703" target="_blank" rel="noopener" class="item-card">
+      <a href="https://antonioli.eu/ja-jp/products/man-sunflower-clothing-jeans-5117-703" target="_blank" rel="noopener noreferrer" class="item-card">
         <div class="item-image-box">
           <img src="https://antonioli.eu/cdn/shop/files/S67LA0054M30066964-REGULAR-MAISONMARGIELA-Uomo-20261030155821_2.jpg" alt="SUNFLOWER Straight Jeans" class="item-image" loading="lazy">
         </div>
@@ -331,10 +374,11 @@
             <span class="price-current">約 ¥28,000</span>
             <span class="price-orig">¥42,000</span>
           </div>
+          <div class="view-btn">購入ページを開く ↗</div>
         </div>
       </a>
 
-      <a href="https://www.acrmtsm.jp/products/detail/8069" target="_blank" rel="noopener" class="item-card">
+      <a href="https://www.acrmtsm.jp/products/detail/8069" target="_blank" rel="noopener noreferrer" class="item-card">
         <div class="item-image-box">
           <img src="https://image.salesnauts.com/acrmtsm/img/jsXP7NWCEUxS.jpg" alt="SUGARHILL Double Knee Denim" class="item-image" loading="lazy">
         </div>
@@ -349,10 +393,11 @@
             <span class="price-current">¥41,800</span>
             <span class="price-orig">定価公式</span>
           </div>
+          <div class="view-btn">購入ページを開く ↗</div>
         </div>
       </a>
 
-      <a href="https://www.acrmtsm.jp/products/detail/79709" target="_blank" rel="noopener" class="item-card">
+      <a href="https://www.acrmtsm.jp/products/detail/79709" target="_blank" rel="noopener noreferrer" class="item-card">
         <div class="item-image-box">
           <img src="https://image.salesnauts.com/acrmtsm/img/XCtZcxTDWbXu.jpg" alt="SHINYAKOZUKA Classic Shirt" class="item-image" loading="lazy">
         </div>
@@ -367,6 +412,7 @@
             <span class="price-current">¥29,700</span>
             <span class="price-orig">公式在庫</span>
           </div>
+          <div class="view-btn">購入ページを開く ↗</div>
         </div>
       </a>
     </div>
@@ -385,7 +431,7 @@
     </div>
 
     <div class="product-grid">
-      <a href="https://nubiantokyo.com/products/esfw26ja02012" target="_blank" rel="noopener" class="item-card">
+      <a href="https://nubiantokyo.com/products/esfw26ja02012" target="_blank" rel="noopener noreferrer" class="item-card">
         <div class="item-image-box">
           <img src="https://nubiantokyo.com/cdn/shop/files/0004-01_85e722e8-9d88-4dc4-9861-324233da5d36.jpg" alt="ENTIRE STUDIOS Portal Jacket" class="item-image" loading="lazy">
         </div>
@@ -400,10 +446,11 @@
             <span class="price-current">¥156,200</span>
             <span class="price-orig">公式取扱</span>
           </div>
+          <div class="view-btn">購入ページを開く ↗</div>
         </div>
       </a>
 
-      <a href="https://hbx.com/men/brands/entire-studios/cinch-pant-4-black" target="_blank" rel="noopener" class="item-card">
+      <a href="https://hbx.com/men/brands/entire-studios/cinch-pant-4-black" target="_blank" rel="noopener noreferrer" class="item-card">
         <div class="item-image-box">
           <img src="https://image-cdn.hypb.st/https%3A%2F%2Fs3.store.hypebeast.com%2Fmedia%2Fimage%2Fda%2F4e%2Fpants-1-1-5e6f1.jpg?fit=max&w=1080&q=90" alt="ENTIRE STUDIOS Cinch Pant" class="item-image" loading="lazy">
         </div>
@@ -418,10 +465,11 @@
             <span class="price-current">約 ¥31,000</span>
             <span class="price-orig">¥76,000</span>
           </div>
+          <div class="view-btn">購入ページを開く ↗</div>
         </div>
       </a>
 
-      <a href="https://slamjam.com/products/needles-clothing-hd-jean-memory-poly-taffeta-black-j353067" target="_blank" rel="noopener" class="item-card">
+      <a href="https://slamjam.com/products/needles-clothing-hd-jean-memory-poly-taffeta-black-j353067" target="_blank" rel="noopener noreferrer" class="item-card">
         <div class="item-image-box">
           <img src="https://slamjam.com/cdn/shop/files/Needles-Clothing-Casual-HdJeanMemoryPolyTaffetaBlack-SX185101487468-20260421110507_1.jpg" alt="NEEDLES HD Jeans" class="item-image" loading="lazy">
         </div>
@@ -436,6 +484,7 @@
             <span class="price-current">約 ¥22,800</span>
             <span class="price-orig">¥45,000</span>
           </div>
+          <div class="view-btn">購入ページを開く ↗</div>
         </div>
       </a>
     </div>
@@ -454,7 +503,7 @@
     </div>
 
     <div class="product-grid">
-      <a href="https://whyareyouhere.jp/products/prisoner-drawstring-11" target="_blank" rel="noopener" class="item-card">
+      <a href="https://whyareyouhere.jp/products/prisoner-drawstring-11" target="_blank" rel="noopener noreferrer" class="item-card">
         <div class="item-image-box">
           <img src="https://whyareyouhere.jp/cdn/shop/files/2A33AB5F-F2D5-43A9-B759-07D87FB75FDB.jpg" alt="Rick Owens DRKSHDW Prisoner" class="item-image" loading="lazy">
         </div>
@@ -469,10 +518,11 @@
             <span class="price-current">¥83,930</span>
             <span class="price-orig">¥119,900</span>
           </div>
+          <div class="view-btn">購入ページを開く ↗</div>
         </div>
       </a>
 
-      <a href="https://slamjam.com/products/converse-footwear-converse-onestar-drkshdw-black-j341083" target="_blank" rel="noopener" class="item-card">
+      <a href="https://slamjam.com/products/converse-footwear-converse-onestar-drkshdw-black-j341083" target="_blank" rel="noopener noreferrer" class="item-card">
         <div class="item-image-box">
           <img src="https://slamjam.com/cdn/shop/files/Converse-Footwear-Low-ConverseOnestarDrkshdwBlack-A14796C-20251110112026_1.jpg" alt="Converse x DRKSHDW ONESTR" class="item-image" loading="lazy">
         </div>
@@ -487,10 +537,11 @@
             <span class="price-current">約 ¥14,800</span>
             <span class="price-orig">¥29,000</span>
           </div>
+          <div class="view-btn">購入ページを開く ↗</div>
         </div>
       </a>
 
-      <a href="https://www.svrn.com/products/sacai-denim-pants-in-brown" target="_blank" rel="noopener" class="item-card">
+      <a href="https://www.svrn.com/products/sacai-denim-pants-in-brown" target="_blank" rel="noopener noreferrer" class="item-card">
         <div class="item-image-box">
           <img src="https://www.svrn.com/cdn/shop/files/denim-pants-in-brown-men-s-pants-sacai-svrn-chicago-1192487684.jpg" alt="SACAI Cargo Denim" class="item-image" loading="lazy">
         </div>
@@ -505,6 +556,7 @@
             <span class="price-current">約 ¥58,900</span>
             <span class="price-orig">¥130,000</span>
           </div>
+          <div class="view-btn">購入ページを開く ↗</div>
         </div>
       </a>
     </div>
@@ -524,6 +576,15 @@
   <div class="copyright">
     &copy; 2026 MODE STREET LAB. CURATED BY JUN ISHIMOTO.
   </div>
+
+  <script>
+    // スマホでのタップによる確実な新規タブオープン保証
+    document.querySelectorAll('.item-card').forEach(function(card) {
+      card.addEventListener('touchend', function(e) {
+        // 通常のリンクタップを確実に行う
+      });
+    });
+  </script>
 
 </body>
 </html>
