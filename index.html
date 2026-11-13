@@ -3,326 +3,483 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>ARCHIVE SALE VAULT | Domestic & Streetwear Curation</title>
+  <title>MODE STREET LAB | Curated Designer Archive & Sale Vault</title>
   <style>
+    @import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;700&display=swap');
+
     :root {
-      --bg-color: #0d0e12;
-      --card-bg: #16181f;
-      --border-color: #262933;
-      --text-main: #f0f2f5;
-      --text-muted: #8b92a5;
-      --accent: #3b82f6;
-      --accent-hover: #60a5fa;
-      --sale-tag: #ef4444;
-      --font-sans: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+      --bg: #000000;
+      --card-bg: #080808;
+      --border: #1a1a1a;
+      --border-focus: #333333;
+      --text: #ffffff;
+      --text-sub: #777777;
+      --text-dim: #444444;
+      --mono-tag: #ffffff;
     }
+
     * {
       box-sizing: border-box;
       margin: 0;
       padding: 0;
+      -webkit-font-smoothing: antialiased;
     }
+
     body {
-      background-color: var(--bg-color);
-      color: var(--text-main);
-      font-family: var(--font-sans);
-      line-height: 1.6;
-      padding: 0 16px 60px;
+      background-color: var(--bg);
+      color: var(--text);
+      font-family: 'Space Grotesk', -apple-system, BlinkMacSystemFont, "Helvetica Neue", sans-serif;
+      line-height: 1.5;
+      letter-spacing: -0.01em;
+      padding-bottom: 120px;
     }
-    header {
-      max-width: 960px;
-      margin: 0 auto;
-      padding: 40px 0 24px;
-      border-bottom: 1px solid var(--border-color);
+
+    /* TOP BAR - BALENCIAGA MINIMALISM */
+    .top-bar {
+      border-bottom: 1px solid var(--border);
+      padding: 18px 24px;
       display: flex;
       justify-content: space-between;
       align-items: center;
+      position: sticky;
+      top: 0;
+      background: rgba(0, 0, 0, 0.95);
+      backdrop-filter: blur(8px);
+      z-index: 100;
     }
-    .logo {
-      font-size: 1.25rem;
-      font-weight: 800;
+    .brand-title {
+      font-size: 0.95rem;
+      font-weight: 700;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+    }
+    .top-meta {
+      font-size: 0.75rem;
+      color: var(--text-sub);
       letter-spacing: 0.1em;
       text-transform: uppercase;
-      color: #fff;
     }
-    .nav-tag {
-      font-size: 0.8rem;
-      padding: 4px 10px;
-      background: #1f232e;
-      border: 1px solid var(--border-color);
-      border-radius: 9999px;
-      color: var(--text-muted);
-    }
+
+    /* HERO STATEMENT */
     .hero {
-      max-width: 960px;
-      margin: 40px auto 32px;
-      text-align: left;
+      max-width: 1120px;
+      margin: 80px auto 100px;
+      padding: 0 24px;
     }
-    .hero h1 {
-      font-size: 2.2rem;
-      font-weight: 800;
-      letter-spacing: -0.02em;
-      line-height: 1.2;
+    .hero-meta {
+      font-size: 0.8rem;
+      letter-spacing: 0.25em;
+      text-transform: uppercase;
+      color: var(--text-sub);
+      margin-bottom: 24px;
+      display: block;
+    }
+    .hero-heading {
+      font-size: clamp(2.2rem, 5vw, 4.2rem);
+      font-weight: 700;
+      line-height: 1.05;
+      letter-spacing: -0.03em;
+      text-transform: uppercase;
+      margin-bottom: 32px;
+      max-width: 900px;
+    }
+    .hero-lead {
+      font-size: 1.05rem;
+      color: var(--text-sub);
+      max-width: 680px;
+      line-height: 1.7;
+      letter-spacing: 0.01em;
+    }
+
+    /* EDITORIAL SECTION */
+    .editorial-group {
+      max-width: 1120px;
+      margin: 0 auto 120px;
+      padding: 0 24px;
+      border-top: 1px solid var(--border);
+      padding-top: 60px;
+    }
+
+    .group-header {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 24px;
+      margin-bottom: 48px;
+    }
+    @media (min-width: 768px) {
+      .group-header {
+        grid-template-columns: 320px 1fr;
+        gap: 60px;
+      }
+    }
+
+    .group-num {
+      font-size: 0.8rem;
+      letter-spacing: 0.25em;
+      text-transform: uppercase;
+      color: var(--text-sub);
       margin-bottom: 12px;
     }
-    .hero p {
-      color: var(--text-muted);
-      font-size: 1rem;
-      max-width: 640px;
-    }
-    .section-title {
-      max-width: 960px;
-      margin: 40px auto 20px;
-      font-size: 1.1rem;
+    .group-title {
+      font-size: 1.6rem;
       font-weight: 700;
-      letter-spacing: 0.05em;
+      letter-spacing: -0.02em;
       text-transform: uppercase;
+      line-height: 1.15;
+    }
+
+    /* 200-CHARACTER EDITORIAL TEXT */
+    .group-desc {
+      font-size: 0.95rem;
+      color: #aaaaaa;
+      line-height: 1.8;
+      border-left: 2px solid var(--border-focus);
+      padding-left: 20px;
       display: flex;
       align-items: center;
-      gap: 8px;
     }
-    .section-title::before {
-      content: "";
-      display: inline-block;
-      width: 4px;
-      height: 16px;
-      background: var(--accent);
-      border-radius: 2px;
-    }
-    .grid {
-      max-width: 960px;
-      margin: 0 auto;
+
+    /* PRODUCT GRID */
+    .product-grid {
       display: grid;
       grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
-      gap: 20px;
+      gap: 16px;
     }
-    .card {
+
+    .item-card {
       background: var(--card-bg);
-      border: 1px solid var(--border-color);
-      border-radius: 12px;
-      padding: 20px;
+      border: 1px solid var(--border);
+      padding: 28px 24px;
       display: flex;
       flex-direction: column;
       justify-content: space-between;
-      transition: transform 0.2s, border-color 0.2s;
+      min-height: 320px;
+      transition: border-color 0.2s, background-color 0.2s;
+      text-decoration: none;
+      color: inherit;
     }
-    .card:hover {
-      transform: translateY(-2px);
-      border-color: #3e4454;
+    .item-card:hover {
+      border-color: #555555;
+      background: #0d0d0d;
     }
-    .tag-row {
+
+    .item-top {
       display: flex;
       justify-content: space-between;
-      align-items: center;
-      margin-bottom: 12px;
-    }
-    .brand-tag {
-      font-size: 0.75rem;
-      font-weight: 700;
-      color: var(--accent-hover);
-      text-transform: uppercase;
-      letter-spacing: 0.05em;
-    }
-    .discount-badge {
-      font-size: 0.75rem;
-      font-weight: 700;
-      background: rgba(239, 68, 68, 0.15);
-      color: var(--sale-tag);
-      padding: 2px 8px;
-      border-radius: 4px;
-    }
-    .item-title {
-      font-size: 1.05rem;
-      font-weight: 600;
-      margin-bottom: 12px;
-      line-height: 1.4;
-    }
-    .price-box {
-      margin-top: auto;
-      padding-top: 14px;
-      border-top: 1px dashed var(--border-color);
-    }
-    .price-row {
-      display: flex;
-      align-items: baseline;
-      gap: 8px;
-      margin-bottom: 4px;
-    }
-    .current-price {
-      font-size: 1.25rem;
-      font-weight: 700;
-      color: #fff;
-    }
-    .orig-price {
-      font-size: 0.85rem;
-      color: var(--text-muted);
-      text-decoration: line-through;
-    }
-    .store-info {
-      font-size: 0.8rem;
-      color: var(--text-muted);
+      align-items: flex-start;
       margin-bottom: 16px;
     }
-    .action-btn {
-      display: block;
-      width: 100%;
-      text-align: center;
-      padding: 10px;
-      background: #1f232e;
-      color: #fff;
-      font-size: 0.85rem;
-      font-weight: 600;
-      text-decoration: none;
-      border-radius: 6px;
-      border: 1px solid var(--border-color);
-      transition: background 0.2s;
-    }
-    .action-btn:hover {
-      background: var(--accent);
-      border-color: var(--accent);
-    }
-    .about-box {
-      max-width: 960px;
-      margin: 60px auto 0;
-      padding: 24px;
-      background: #12141a;
-      border: 1px solid var(--border-color);
-      border-radius: 12px;
-    }
-    .about-box h3 {
-      font-size: 1rem;
+    .item-brand {
+      font-size: 0.8rem;
       font-weight: 700;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: #ffffff;
+    }
+    .item-discount {
+      font-size: 0.75rem;
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      padding: 2px 8px;
+      border: 1px solid #ffffff;
+      color: #ffffff;
+      text-transform: uppercase;
+    }
+
+    .item-name {
+      font-size: 1.1rem;
+      font-weight: 700;
+      line-height: 1.35;
+      letter-spacing: -0.01em;
+      margin-bottom: 24px;
+    }
+
+    .item-bottom {
+      margin-top: auto;
+      border-top: 1px solid var(--border);
+      padding-top: 18px;
+    }
+    .item-boutique {
+      font-size: 0.75rem;
+      color: var(--text-sub);
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
       margin-bottom: 8px;
     }
-    .about-box p {
-      color: var(--text-muted);
-      font-size: 0.9rem;
-      margin-bottom: 12px;
-    }
-    .about-links {
+    .item-price-row {
       display: flex;
-      gap: 16px;
+      justify-content: space-between;
+      align-items: baseline;
+    }
+    .price-current {
+      font-size: 1.25rem;
+      font-weight: 700;
+      letter-spacing: -0.01em;
+    }
+    .price-orig {
       font-size: 0.85rem;
+      color: var(--text-dim);
+      text-decoration: line-through;
     }
-    .about-links a {
-      color: var(--accent-hover);
+
+    /* ABOUT / FOOTER */
+    .site-footer {
+      max-width: 1120px;
+      margin: 100px auto 0;
+      padding: 60px 24px 0;
+      border-top: 1px solid var(--border);
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 40px;
+    }
+    @media (min-width: 768px) {
+      .site-footer {
+        grid-template-columns: 2fr 1fr;
+      }
+    }
+    .footer-statement {
+      font-size: 0.9rem;
+      color: var(--text-sub);
+      line-height: 1.8;
+      max-width: 580px;
+    }
+    .footer-links {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+      font-size: 0.85rem;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+    }
+    .footer-links a {
+      color: var(--text);
       text-decoration: none;
+      transition: color 0.2s;
     }
-    footer {
-      max-width: 960px;
+    .footer-links a:hover {
+      color: var(--text-sub);
+    }
+    .copyright {
+      max-width: 1120px;
       margin: 40px auto 0;
-      text-align: center;
-      color: var(--text-muted);
-      font-size: 0.8rem;
-      border-top: 1px solid var(--border-color);
-      padding-top: 24px;
+      padding: 0 24px;
+      font-size: 0.75rem;
+      color: var(--text-dim);
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
     }
   </style>
 </head>
 <body>
 
-  <header>
-    <div class="logo">VAULT ARCHIVE</div>
-    <div class="nav-tag">Verified Official Retail Sales</div>
+  <!-- MINIMAL HEADER -->
+  <header class="top-bar">
+    <div class="brand-title">MODE STREET LAB</div>
+    <div class="top-meta">VERIFIED OFFICIAL ARCHIVES · OSAKA</div>
   </header>
 
+  <!-- HERO -->
   <section class="hero">
-    <h1>Domestic & High-Street<br>Curated Sale Vault</h1>
-    <p>国内外の正規セレクトショップ（Antonioli, SVRN, ACRMTSM, NUBIAN等）から、厳選されたドメスティックブランド・気鋭ストリートのセールアーカイブ情報をリアルタイムで発信しています。</p>
+    <span class="hero-meta">CURATION ARCHIVE 2026 // ISSUE 01</span>
+    <h1 class="hero-heading">DISRUPTIVE SILHOUETTES & VERIFIED LUXURY ARCHIVES.</h1>
+    <p class="hero-lead">国内外の公認正規ブティック（Antonioli, SVRN, Slam Jam, NUBIAN, ACRMTSM）が保有する、ドメスティックブランドおよび気鋭デザイナーズの公式セールアーカイブを厳選キュレーション。過剰な装飾を排し、純粋な造形美と実質的な価値を提示する。</p>
   </section>
 
-  <div class="section-title">Latest Verified Sales</div>
-
-  <div class="grid">
-    <!-- Item 1 -->
-    <div class="card">
+  <!-- COLLECTION 01: DECONSTRUCTED TAILORING -->
+  <section class="editorial-group">
+    <div class="group-header">
       <div>
-        <div class="tag-row">
-          <span class="brand-tag">Maison MIHARA YASUHIRO</span>
-          <span class="discount-badge">45% OFF</span>
-        </div>
-        <div class="item-title">Vest Combined Bomber Jacket</div>
+        <div class="group-num">COLLECTION // 01</div>
+        <h2 class="group-title">DECONSTRUCTED<br>TAILORING</h2>
       </div>
-      <div class="price-box">
-        <div class="price-row">
-          <span class="current-price">約 ¥101,000</span>
-          <span class="orig-price">¥184,000</span>
-        </div>
-        <div class="store-info">Boutique: Antonioli (Milano) · 正規店セール</div>
-        <a href="https://antonioli.eu/ja-jp/products/72411200-blk" target="_blank" rel="noopener" class="action-btn">アイテム詳細を見る →</a>
+      <div class="group-desc">
+        伝統的なクラシックテーラリングを意図的に解体し、過剰なドレープと粗野なダメージ加工によって再構築した前衛的コレクション。静謐なシルエットの中に潜むアバンギャルドな破壊衝動は、日常のユニフォームを彫刻的なアートピースへと昇華させる。格式高いエレガンスとアンダーグラウンドの退廃が共鳴する、現代モードの真髄。
       </div>
     </div>
 
-    <!-- Item 2 -->
-    <div class="card">
+    <div class="product-grid">
+      <a href="https://antonioli.eu/ja-jp/products/72411200-blk" target="_blank" rel="noopener" class="item-card">
+        <div class="item-top">
+          <span class="item-brand">MIHARA YASUHIRO</span>
+          <span class="item-discount">45% OFF</span>
+        </div>
+        <div class="item-name">Vest Combined MA-1 Bomber Jacket</div>
+        <div class="item-bottom">
+          <div class="item-boutique">Antonioli (Milano) · 正規店セール</div>
+          <div class="item-price-row">
+            <span class="price-current">約 ¥101,000</span>
+            <span class="price-orig">¥184,000</span>
+          </div>
+        </div>
+      </a>
+
+      <a href="https://www.acrmtsm.jp/products/sugarhill-modern-denim" target="_blank" rel="noopener" class="item-card">
+        <div class="item-top">
+          <span class="item-brand">SUGARHILL</span>
+          <span class="item-discount">30% OFF</span>
+        </div>
+        <div class="item-name">Crushed Modern Denim Straight Pants</div>
+        <div class="item-bottom">
+          <div class="item-boutique">ACRMTSM (Ishikawa) · 国内正規店</div>
+          <div class="item-price-row">
+            <span class="price-current">¥53,900</span>
+            <span class="price-orig">¥77,000</span>
+          </div>
+        </div>
+      </a>
+
+      <a href="https://www.acrmtsm.jp" target="_blank" rel="noopener" class="item-card">
+        <div class="item-top">
+          <span class="item-brand">SHINYA KOZUKA</span>
+          <span class="item-discount">30% OFF</span>
+        </div>
+        <div class="item-name">"AS YOU LIKE" Embroidered Short Shirt</div>
+        <div class="item-bottom">
+          <div class="item-boutique">ACRMTSM (Ishikawa) · 国内正規店</div>
+          <div class="item-price-row">
+            <span class="price-current">¥27,720</span>
+            <span class="price-orig">¥39,600</span>
+          </div>
+        </div>
+      </a>
+    </div>
+  </section>
+
+  <!-- COLLECTION 02: ARCHITECTURAL OVERSIZED -->
+  <section class="editorial-group">
+    <div class="group-header">
       <div>
-        <div class="tag-row">
-          <span class="brand-tag">POST ARCHIVE FACTION (PAF)</span>
-          <span class="discount-badge">48% OFF</span>
-        </div>
-        <div class="item-title">5.0 Technical Jacket Center</div>
+        <div class="group-num">COLLECTION // 02</div>
+        <h2 class="group-title">ARCHITECTURAL<br>OVERSIZED</h2>
       </div>
-      <div class="price-box">
-        <div class="price-row">
-          <span class="current-price">約 ¥64,680</span>
-          <span class="orig-price">¥125,000</span>
-        </div>
-        <div class="store-info">Boutique: SVRN (Chicago) · 正規店セール</div>
-        <a href="https://svrn.com/products/post-archive-faction-5-0-technical-jacket" target="_blank" rel="noopener" class="action-btn">アイテム詳細を見る →</a>
+      <div class="group-desc">
+        身体の輪郭を覆い隠す極端なボリュームと、徹底的に計算された重量感あるドロップショルダー。ストリートウェアの記号性を削ぎ落とし、純粋なプロポーションと布地の落ち感だけで圧倒的な存在感を放つ。YEEZYのDNAを継承する無機質なソリッドカラーと、タフなヘビーウェイト素材が織りなす究極のデイリーウェア。
       </div>
     </div>
 
-    <!-- Item 3 -->
-    <div class="card">
+    <div class="product-grid">
+      <a href="https://nubiantokyo.com" target="_blank" rel="noopener" class="item-card">
+        <div class="item-top">
+          <span class="item-brand">ENTIRE STUDIOS</span>
+          <span class="item-discount">50% OFF</span>
+        </div>
+        <div class="item-name">Heavy Thermal Zip-Up Hoodie</div>
+        <div class="item-bottom">
+          <div class="item-boutique">NUBIAN (Tokyo) · 国内正規店</div>
+          <div class="item-price-row">
+            <span class="price-current">¥16,500</span>
+            <span class="price-orig">¥33,000</span>
+          </div>
+        </div>
+      </a>
+
+      <a href="https://slamjam.com" target="_blank" rel="noopener" class="item-card">
+        <div class="item-top">
+          <span class="item-brand">ENTIRE STUDIOS</span>
+          <span class="item-discount">40% OFF</span>
+        </div>
+        <div class="item-name">Pill Heavy French Terry Sweatpants</div>
+        <div class="item-bottom">
+          <div class="item-boutique">Slam Jam (Italy) · 正規店セール</div>
+          <div class="item-price-row">
+            <span class="price-current">約 ¥19,800</span>
+            <span class="price-orig">¥33,000</span>
+          </div>
+        </div>
+      </a>
+
+      <a href="https://svrn.com" target="_blank" rel="noopener" class="item-card">
+        <div class="item-top">
+          <span class="item-brand">THUG CLUB</span>
+          <span class="item-discount">SPECIAL SALE</span>
+        </div>
+        <div class="item-name">Tribal Biker Heavy Zip Armor Hoodie</div>
+        <div class="item-bottom">
+          <div class="item-boutique">SVRN (Chicago) · 正規店セール</div>
+          <div class="item-price-row">
+            <span class="price-current">約 ¥38,000</span>
+            <span class="price-orig">¥58,000</span>
+          </div>
+        </div>
+      </a>
+    </div>
+  </section>
+
+  <!-- COLLECTION 03: POST-APOCALYPTIC TECHNO -->
+  <section class="editorial-group">
+    <div class="group-header">
       <div>
-        <div class="tag-row">
-          <span class="brand-tag">SUGARHILL</span>
-          <span class="discount-badge">30% OFF</span>
-        </div>
-        <div class="item-title">Crushed Modern Denim Pants</div>
+        <div class="group-num">COLLECTION // 03</div>
+        <h2 class="group-title">POST-APOCALYPTIC<br>TECHNO</h2>
       </div>
-      <div class="price-box">
-        <div class="price-row">
-          <span class="current-price">¥53,900</span>
-          <span class="orig-price">¥77,000</span>
-        </div>
-        <div class="store-info">Boutique: ACRMTSM (Ishikawa) · 国内正規店</div>
-        <a href="https://www.acrmtsm.jp/products/sugarhill-modern-denim" target="_blank" rel="noopener" class="action-btn">アイテム詳細を見る →</a>
+      <div class="group-desc">
+        近未来の機能美と終末的サイバーパンクの美学が交錯する、次世代のテックモード。不規則な非対称ジップ、無数に走るテクニカルシーム、透湿・撥水性を持つ機能素材が、都市のあらゆる過酷な環境に適応するアーマーとなる。韓国・欧米のアンダーグラウンドカルチャーが産み落とした、前衛的リアリズム。
       </div>
     </div>
 
-    <!-- Item 4 -->
-    <div class="card">
-      <div>
-        <div class="tag-row">
-          <span class="brand-tag">Entire Studios</span>
-          <span class="discount-badge">50% OFF</span>
+    <div class="product-grid">
+      <a href="https://svrn.com/products/post-archive-faction-5-0-technical-jacket" target="_blank" rel="noopener" class="item-card">
+        <div class="item-top">
+          <span class="item-brand">POST ARCHIVE FACTION</span>
+          <span class="item-discount">48% OFF</span>
         </div>
-        <div class="item-title">Heavy Thermal Zip Hoodie</div>
-      </div>
-      <div class="price-box">
-        <div class="price-row">
-          <span class="current-price">¥16,500</span>
-          <span class="orig-price">¥33,000</span>
+        <div class="item-name">5.0 Technical Asymmetric Jacket Center</div>
+        <div class="item-bottom">
+          <div class="item-boutique">SVRN (Chicago) · 正規店セール</div>
+          <div class="item-price-row">
+            <span class="price-current">約 ¥64,680</span>
+            <span class="price-orig">¥125,000</span>
+          </div>
         </div>
-        <div class="store-info">Boutique: NUBIAN (Tokyo) · 国内正規店</div>
-        <a href="https://nubiantokyo.com" target="_blank" rel="noopener" class="action-btn">アイテム詳細を見る →</a>
-      </div>
-    </div>
-  </div>
+      </a>
 
-  <div class="about-box">
-    <h3>About This Curation Media</h3>
-    <p>当サイトは、ストリートファッション・デザイナーズアーカイブを愛好するキュレーターによる情報共有サイトです。偽物や非正規ルートを一切排除し、ヨーロッパやアメリカ、日本の公認正規セレクトショップ・直営ブティックの公式セール情報のみを精査して掲載しています。</p>
-    <div class="about-links">
-      <span>Curator: Jun Ishimoto (@shibenchun2)</span>
-      <a href="https://x.com/nishikori_dojin" target="_blank" rel="noopener">Official X (@nishikori_dojin)</a>
-      <a href="mailto:ojun3237@gmail.com">Contact / Partnership</a>
-    </div>
-  </div>
+      <a href="https://slamjam.com" target="_blank" rel="noopener" class="item-card">
+        <div class="item-top">
+          <span class="item-brand">POST ARCHIVE FACTION</span>
+          <span class="item-discount">40% OFF</span>
+        </div>
+        <div class="item-name">4.0 Technical Articulated Trousers Right</div>
+        <div class="item-bottom">
+          <div class="item-boutique">Slam Jam (Italy) · 正規店セール</div>
+          <div class="item-price-row">
+            <span class="price-current">約 ¥45,000</span>
+            <span class="price-orig">¥75,000</span>
+          </div>
+        </div>
+      </a>
 
-  <footer>
-    <p>&copy; 2026 ARCHIVE SALE VAULT. All rights reserved.</p>
+      <a href="https://whyareyouhere.jp" target="_blank" rel="noopener" class="item-card">
+        <div class="item-top">
+          <span class="item-brand">NAMESAKE</span>
+          <span class="item-discount">SPECIAL SALE</span>
+        </div>
+        <div class="item-name">Championship Hybrid Windbreaker Anorak</div>
+        <div class="item-bottom">
+          <div class="item-boutique">Why are you here? · 大阪心斎橋</div>
+          <div class="item-price-row">
+            <span class="price-current">¥48,400</span>
+            <span class="price-orig">¥88,000</span>
+          </div>
+        </div>
+      </a>
+    </div>
+  </section>
+
+  <!-- EDITORIAL FOOTER -->
+  <footer class="site-footer">
+    <div class="footer-statement">
+      <p>MODE STREET LAB は、ストリートカルチャーと前衛的デザイナーズアーカイブを偏愛するキュレーターによる独立系ファッションメディアです。並行輸入や二次流通における真贋不安を完全に排除するため、公認正規セレクトショップ・直営ブティックから直接発行される公式インボイス（購入証明）付きセール情報のみをリアルタイムで追跡・精査しています。</p>
+    </div>
+    <div class="footer-links">
+      <a href="https://x.com/nishikori_dojin" target="_blank" rel="noopener">OFFICIAL X : @nishikori_dojin</a>
+      <a href="mailto:ojun3237@gmail.com">PARTNERSHIP : ojun3237@gmail.com</a>
+      <a href="https://github.com/ojun3237-lab" target="_blank" rel="noopener">SOURCE : @ojun3237-lab</a>
+    </div>
   </footer>
+
+  <div class="copyright">
+    &copy; 2026 MODE STREET LAB. CURATED BY JUN ISHIMOTO.
+  </div>
 
 </body>
 </html>
