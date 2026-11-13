@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>MODE STREET LAB | Curated Designer Archive & Sale Vault</title>
+  <title>MODE STREET LAB | Curated Designer Archive & Weekly Magazine</title>
   <style>
     @import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;700&display=swap');
 
@@ -64,7 +64,7 @@
     /* HERO STATEMENT */
     .hero {
       max-width: 1120px;
-      margin: 80px auto 100px;
+      margin: 60px auto 40px;
       padding: 0 24px;
     }
     .hero-meta {
@@ -72,7 +72,7 @@
       letter-spacing: 0.25em;
       text-transform: uppercase;
       color: var(--text-sub);
-      margin-bottom: 24px;
+      margin-bottom: 20px;
       display: block;
     }
     .hero-heading {
@@ -81,30 +81,87 @@
       line-height: 1.05;
       letter-spacing: -0.03em;
       text-transform: uppercase;
-      margin-bottom: 32px;
+      margin-bottom: 24px;
       max-width: 900px;
     }
     .hero-lead {
       font-size: 1.05rem;
       color: var(--text-sub);
-      max-width: 680px;
+      max-width: 720px;
       line-height: 1.7;
       letter-spacing: 0.01em;
+    }
+
+    /* ISSUE TABS BAR (何日号タブ) */
+    .issue-tabs-wrapper {
+      max-width: 1120px;
+      margin: 40px auto 60px;
+      padding: 0 24px;
+    }
+    .issue-tabs-label {
+      font-size: 0.75rem;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--text-dim);
+      margin-bottom: 12px;
+      display: block;
+    }
+    .issue-tabs {
+      display: flex;
+      gap: 12px;
+      border-bottom: 1px solid var(--border);
+      padding-bottom: 12px;
+      overflow-x: auto;
+      scrollbar-width: none;
+    }
+    .issue-tabs::-webkit-scrollbar {
+      display: none;
+    }
+    .issue-tab-btn {
+      background: transparent;
+      border: 1px solid var(--border);
+      color: var(--text-sub);
+      padding: 10px 18px;
+      font-family: inherit;
+      font-size: 0.8rem;
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      cursor: pointer;
+      white-space: nowrap;
+      transition: all 0.2s;
+    }
+    .issue-tab-btn:hover {
+      border-color: #555555;
+      color: var(--text);
+    }
+    .issue-tab-btn.active {
+      background: #ffffff;
+      color: #000000;
+      border-color: #ffffff;
+    }
+
+    /* TAB CONTENT PANELS */
+    .tab-panel {
+      display: none;
+    }
+    .tab-panel.active {
+      display: block;
     }
 
     /* EDITORIAL SECTION */
     .editorial-group {
       max-width: 1120px;
-      margin: 0 auto 120px;
+      margin: 0 auto 100px;
       padding: 0 24px;
       border-top: 1px solid var(--border);
-      padding-top: 60px;
+      padding-top: 50px;
     }
     .group-header {
       display: grid;
       grid-template-columns: 1fr;
       gap: 24px;
-      margin-bottom: 48px;
+      margin-bottom: 40px;
     }
     @media (min-width: 768px) {
       .group-header {
@@ -120,7 +177,7 @@
       margin-bottom: 12px;
     }
     .group-title {
-      font-size: clamp(1.8rem, 3.5vw, 2.8rem);
+      font-size: clamp(1.8rem, 3.5vw, 2.6rem);
       font-weight: 700;
       line-height: 1.1;
       letter-spacing: -0.02em;
@@ -152,7 +209,7 @@
       }
     }
 
-    /* PRODUCT CARD - TOUCH OPTIMIZED */
+    /* PRODUCT CARD */
     .item-card {
       background: var(--card-bg);
       border: 1px solid var(--border);
@@ -187,7 +244,6 @@
       }
     }
 
-    /* PRODUCT IMAGE BOX - POINTER EVENTS NONE FOR INSTANT TAP */
     .item-image-box {
       width: 100%;
       aspect-ratio: 4/5;
@@ -196,7 +252,7 @@
       margin-bottom: 20px;
       border: 1px solid var(--border);
       position: relative;
-      pointer-events: none; /* スマホでタップが画像に吸われず、親のリンクに100%直撃する */
+      pointer-events: none;
     }
     .item-image {
       width: 100%;
@@ -264,7 +320,6 @@
       text-decoration: line-through;
     }
 
-    /* DIRECT TAP BUTTON */
     .view-btn {
       width: 100%;
       padding: 12px 16px;
@@ -280,7 +335,7 @@
       justify-content: center;
       align-items: center;
       gap: 8px;
-      pointer-events: none; /* カード全体タップと一体化 */
+      pointer-events: none;
     }
 
     /* ABOUT / FOOTER */
@@ -336,236 +391,310 @@
   <!-- MINIMAL HEADER -->
   <header class="top-bar">
     <div class="brand-title">MODE STREET LAB</div>
-    <div class="top-meta">VERIFIED OFFICIAL ARCHIVES · OSAKA</div>
+    <div class="top-meta">WEEKLY CURATED ARCHIVE · FRIDAY EDITION</div>
   </header>
 
   <!-- HERO -->
   <section class="hero">
-    <span class="hero-meta">CURATION ARCHIVE 2026 // ISSUE 01</span>
-    <h1 class="hero-heading">DISRUPTIVE SILHOUETTES & VERIFIED LUXURY ARCHIVES.</h1>
-    <p class="hero-lead">国内外の公認正規ブティック（Antonioli, SVRN, Slam Jam, NUBIAN, ACRMTSM, HBX）が保有する、ドメスティックブランドおよび気鋭デザイナーズの公式セールアーカイブを厳選キュレーション。各カード・写真をタップすると、実際のブティック購入ページへ一発でジャンプします。</p>
+    <span class="hero-meta">CURATION ARCHIVE // WEEKLY FRIDAY MAGAZINE</span>
+    <h1 class="hero-heading">DISRUPTIVE SILHOUETTES & MEGA-BOUTIQUE SALES.</h1>
+    <p class="hero-lead">SSENSE、FARFETCH、Antonioli、NUBIAN、Slam Jam、ACRMTSM、Why are you here?、HBX、SVRNの国内外公認正規ストアから、ドメブラ＆気鋭デザイナーズの公式セール品を毎週金曜日に厳選更新。各カードをタップすると公式購入ページへ完全直結します。</p>
   </section>
 
-  <!-- COLLECTION 01: DECONSTRUCTED TAILORING -->
-  <section class="editorial-group">
-    <div class="group-header">
-      <div>
-        <div class="group-num">COLLECTION // 01</div>
-        <h2 class="group-title">DECONSTRUCTED<br>TAILORING</h2>
-      </div>
-      <div class="group-desc">
-        伝統的なクラシックテーラリングを意図的に解体し、過剰なドレープと粗野なダメージ加工によって再構築した前衛的コレクション。静謐なシルエットの中に潜むアバンギャルドな破壊衝動は、日常のユニフォームを彫刻的なアートピースへと昇華させる。格式高いエレガンスとアンダーグラウンドの退廃が共鳴する、現代モードの真髄。
-      </div>
-    </div>
-
-    <div class="product-grid">
-      <a href="https://antonioli.eu/ja-jp/products/man-sunflower-clothing-jeans-5117-703" target="_blank" rel="noopener noreferrer" class="item-card">
-        <div class="item-image-box">
-          <img src="https://antonioli.eu/cdn/shop/files/S67LA0054M30066964-REGULAR-MAISONMARGIELA-Uomo-20261030155821_2.jpg" alt="SUNFLOWER Straight Jeans" class="item-image" loading="lazy">
-        </div>
-        <div class="item-top">
-          <span class="item-brand">SUNFLOWER</span>
-          <span class="item-discount">DIRECT PAGE</span>
-        </div>
-        <div class="item-name">Straight Leg Raw Denim Trousers</div>
-        <div class="item-bottom">
-          <div class="item-boutique">Antonioli (Milano) · 公式写真</div>
-          <div class="item-price-row">
-            <span class="price-current">約 ¥28,000</span>
-            <span class="price-orig">¥42,000</span>
-          </div>
-          <div class="view-btn">購入ページを開く ↗</div>
-        </div>
-      </a>
-
-      <a href="https://www.acrmtsm.jp/products/detail/8069" target="_blank" rel="noopener noreferrer" class="item-card">
-        <div class="item-image-box">
-          <img src="https://image.salesnauts.com/acrmtsm/img/jsXP7NWCEUxS.jpg" alt="SUGARHILL Double Knee Denim" class="item-image" loading="lazy">
-        </div>
-        <div class="item-top">
-          <span class="item-brand">SUGARHILL</span>
-          <span class="item-discount">残りわずか</span>
-        </div>
-        <div class="item-name">Classic Double Knee Denim Pants</div>
-        <div class="item-bottom">
-          <div class="item-boutique">ACRMTSM (石川) · 公式写真</div>
-          <div class="item-price-row">
-            <span class="price-current">¥41,800</span>
-            <span class="price-orig">定価公式</span>
-          </div>
-          <div class="view-btn">購入ページを開く ↗</div>
-        </div>
-      </a>
-
-      <a href="https://www.acrmtsm.jp/products/detail/79709" target="_blank" rel="noopener noreferrer" class="item-card">
-        <div class="item-image-box">
-          <img src="https://image.salesnauts.com/acrmtsm/img/XCtZcxTDWbXu.jpg" alt="SHINYAKOZUKA Classic Shirt" class="item-image" loading="lazy">
-        </div>
-        <div class="item-top">
-          <span class="item-brand">SHINYAKOZUKA</span>
-          <span class="item-discount">ラスト1点</span>
-        </div>
-        <div class="item-name">Ordinary Office Classic Shirt Grey</div>
-        <div class="item-bottom">
-          <div class="item-boutique">ACRMTSM (石川) · 公式写真</div>
-          <div class="item-price-row">
-            <span class="price-current">¥29,700</span>
-            <span class="price-orig">公式在庫</span>
-          </div>
-          <div class="view-btn">購入ページを開く ↗</div>
-        </div>
-      </a>
+  <!-- ISSUE TABS (何日号タブ) -->
+  <section class="issue-tabs-wrapper">
+    <span class="issue-tabs-label">SELECT EDITION // 号数選択</span>
+    <div class="issue-tabs">
+      <button class="issue-tab-btn active" onclick="switchIssue('issue-20261113')">2026.11.13 ISSUE // 01 (LATEST)</button>
+      <button class="issue-tab-btn" onclick="switchIssue('issue-20261106')">2026.11.06 ISSUE // 00 (ARCHIVE)</button>
     </div>
   </section>
 
-  <!-- COLLECTION 02: ARCHITECTURAL OVERSIZED -->
-  <section class="editorial-group">
-    <div class="group-header">
-      <div>
-        <div class="group-num">COLLECTION // 02</div>
-        <h2 class="group-title">ARCHITECTURAL<br>OVERSIZED</h2>
+  <!-- ==================== ISSUE 01 (2026.11.13 本日・最新号) ==================== -->
+  <div id="issue-20261113" class="tab-panel active">
+
+    <!-- COLLECTION 00: MEGA-BOUTIQUE GLOBAL ARCHIVES (SSENSE & FARFETCH 特集) -->
+    <section class="editorial-group">
+      <div class="group-header">
+        <div>
+          <div class="group-num">COLLECTION // 01 · GLOBAL PLATFORMS</div>
+          <h2 class="group-title">MEGA-BOUTIQUE<br>GLOBAL SALES</h2>
+        </div>
+        <div class="group-desc">
+          世界2大メガプラットフォーム「SSENSE」および「FARFETCH」が展開する公式セールから、カルト的人気を誇るハイモード・アーカイブを厳選。公式インボイス付きの確実な正規品でありながら、最大40%〜50%超の大幅ディスカウントが適用された一撃必殺の主力ピース。
+        </div>
       </div>
-      <div class="group-desc">
-        身体の輪郭を覆い隠す極端なボリュームと、徹底的に計算された重量感あるドロップショルダー。ストリートウェアの記号性を削ぎ落とし、純粋なプロポーションと布地の落ち感だけで圧倒的な存在感を放つ。YEEZYのDNAを継承する無機質なソリッドカラーと、タフなヘビーウェイト素材が織りなす究極のデイリーウェア。
+
+      <div class="product-grid">
+        <!-- FARFETCH: Balenciaga Hoodie -->
+        <a href="https://www.farfetch.com/jp/shopping/men/balenciaga-cursive-item-35743481.aspx" target="_blank" rel="noopener noreferrer" class="item-card">
+          <div class="item-image-box">
+            <img src="https://cdn-images.farfetch-contents.com/35/74/34/81/35743481_95163061_1000.jpg?ov=lightgrey" alt="Balenciaga Cursive Hoodie" class="item-image" loading="lazy">
+          </div>
+          <div class="item-top">
+            <span class="item-brand">BALENCIAGA</span>
+            <span class="item-discount">45% OFF</span>
+          </div>
+          <div class="item-name">Cursive Embroidered Oversized Hoodie</div>
+          <div class="item-bottom">
+            <div class="item-boutique">FARFETCH (Global) · 公式写真</div>
+            <div class="item-price-row">
+              <span class="price-current">¥123,200</span>
+              <span class="price-orig">¥236,200</span>
+            </div>
+            <div class="view-btn">購入ページを開く ↗</div>
+          </div>
+        </a>
+
+        <!-- SSENSE: Diesel Sneakers -->
+        <a href="https://www.ssense.com/ja-jp/men/product/diesel/beige-s-oval-skate-low-sneakers/18747241" target="_blank" rel="noopener noreferrer" class="item-card">
+          <div class="item-image-box">
+            <img src="https://img.ssensemedia.com/images/w_640/261001M237007_1/diesel-beige-s-oval-skate-low-sneakers.jpg" alt="Diesel S-Oval Skate Low Sneakers" class="item-image" loading="lazy">
+          </div>
+          <div class="item-top">
+            <span class="item-brand">DIESEL</span>
+            <span class="item-discount">42% OFF</span>
+          </div>
+          <div class="item-name">Beige S-Oval Skate Low-Top Sneakers</div>
+          <div class="item-bottom">
+            <div class="item-boutique">SSENSE (Montreal) · 公式写真</div>
+            <div class="item-price-row">
+              <span class="price-current">¥34,500</span>
+              <span class="price-orig">¥59,500</span>
+            </div>
+            <div class="view-btn">購入ページを開く ↗</div>
+          </div>
+        </a>
+
+        <!-- HBX: Entire Studios -->
+        <a href="https://hbx.com/men/brands/entire-studios/cinch-pant-4-black" target="_blank" rel="noopener noreferrer" class="item-card">
+          <div class="item-image-box">
+            <img src="https://image-cdn.hypb.st/https%3A%2F%2Fs3.store.hypebeast.com%2Fmedia%2Fimage%2Fda%2F4e%2Fpants-1-1-5e6f1.jpg?fit=max&w=1080&q=90" alt="ENTIRE STUDIOS Cinch Pant" class="item-image" loading="lazy">
+          </div>
+          <div class="item-top">
+            <span class="item-brand">ENTIRE STUDIOS</span>
+            <span class="item-discount">59% OFF</span>
+          </div>
+          <div class="item-name">Cinch Pleated Wide-Leg Pant Black</div>
+          <div class="item-bottom">
+            <div class="item-boutique">HBX (Hypebeast) · 公式写真</div>
+            <div class="item-price-row">
+              <span class="price-current">約 ¥31,000</span>
+              <span class="price-orig">¥76,000</span>
+            </div>
+            <div class="view-btn">購入ページを開く ↗</div>
+          </div>
+        </a>
       </div>
-    </div>
+    </section>
 
-    <div class="product-grid">
-      <a href="https://nubiantokyo.com/products/esfw26ja02012" target="_blank" rel="noopener noreferrer" class="item-card">
-        <div class="item-image-box">
-          <img src="https://nubiantokyo.com/cdn/shop/files/0004-01_85e722e8-9d88-4dc4-9861-324233da5d36.jpg" alt="ENTIRE STUDIOS Portal Jacket" class="item-image" loading="lazy">
+    <!-- COLLECTION 02: DECONSTRUCTED TAILORING -->
+    <section class="editorial-group">
+      <div class="group-header">
+        <div>
+          <div class="group-num">COLLECTION // 02 · DOMESTIC CUTS</div>
+          <h2 class="group-title">DECONSTRUCTED<br>TAILORING</h2>
         </div>
-        <div class="item-top">
-          <span class="item-brand">ENTIRE STUDIOS</span>
-          <span class="item-discount">FW26最新</span>
+        <div class="group-desc">
+          伝統的なクラシックテーラリングを意図的に解体し、過剰なドレープと粗野なダメージ加工によって再構築した前衛的コレクション。静謐なシルエットの中に潜むアバンギャルドな破壊衝動は、日常のユニフォームを彫刻的なアートピースへと昇華させる。格式高いエレガンスとアンダーグラウンドの退廃が共鳴する、現代モードの真髄。
         </div>
-        <div class="item-name">Portal Shearling Heavy Jacket / Aloe</div>
-        <div class="item-bottom">
-          <div class="item-boutique">NUBIAN (東京) · 公式写真</div>
-          <div class="item-price-row">
-            <span class="price-current">¥156,200</span>
-            <span class="price-orig">公式取扱</span>
-          </div>
-          <div class="view-btn">購入ページを開く ↗</div>
-        </div>
-      </a>
-
-      <a href="https://hbx.com/men/brands/entire-studios/cinch-pant-4-black" target="_blank" rel="noopener noreferrer" class="item-card">
-        <div class="item-image-box">
-          <img src="https://image-cdn.hypb.st/https%3A%2F%2Fs3.store.hypebeast.com%2Fmedia%2Fimage%2Fda%2F4e%2Fpants-1-1-5e6f1.jpg?fit=max&w=1080&q=90" alt="ENTIRE STUDIOS Cinch Pant" class="item-image" loading="lazy">
-        </div>
-        <div class="item-top">
-          <span class="item-brand">ENTIRE STUDIOS</span>
-          <span class="item-discount">59% OFF</span>
-        </div>
-        <div class="item-name">Cinch Pleated Wide-Leg Pant Black</div>
-        <div class="item-bottom">
-          <div class="item-boutique">HBX (Hypebeast) · 公式写真</div>
-          <div class="item-price-row">
-            <span class="price-current">約 ¥31,000</span>
-            <span class="price-orig">¥76,000</span>
-          </div>
-          <div class="view-btn">購入ページを開く ↗</div>
-        </div>
-      </a>
-
-      <a href="https://slamjam.com/products/needles-clothing-hd-jean-memory-poly-taffeta-black-j353067" target="_blank" rel="noopener noreferrer" class="item-card">
-        <div class="item-image-box">
-          <img src="https://slamjam.com/cdn/shop/files/Needles-Clothing-Casual-HdJeanMemoryPolyTaffetaBlack-SX185101487468-20260421110507_1.jpg" alt="NEEDLES HD Jeans" class="item-image" loading="lazy">
-        </div>
-        <div class="item-top">
-          <span class="item-brand">NEEDLES</span>
-          <span class="item-discount">50% OFF</span>
-        </div>
-        <div class="item-name">H.D. Memory Poly Taffeta Pants Black</div>
-        <div class="item-bottom">
-          <div class="item-boutique">Slam Jam (Italy) · 公式写真</div>
-          <div class="item-price-row">
-            <span class="price-current">約 ¥22,800</span>
-            <span class="price-orig">¥45,000</span>
-          </div>
-          <div class="view-btn">購入ページを開く ↗</div>
-        </div>
-      </a>
-    </div>
-  </section>
-
-  <!-- COLLECTION 03: POST-APOCALYPTIC TECHNO -->
-  <section class="editorial-group">
-    <div class="group-header">
-      <div>
-        <div class="group-num">COLLECTION // 03</div>
-        <h2 class="group-title">POST-APOCALYPTIC<br>TECHNO</h2>
       </div>
-      <div class="group-desc">
-        近未来の機能美と終末的サイバーパンクの美学が交錯する、次世代のテックモード。不規則な非対称ジップ、無数に走るテクニカルシーム、透湿・撥水性を持つ機能素材が、都市のあらゆる過酷な環境に適応するアーマーとなる。韓国・欧米のアンダーグラウンドカルチャーが産み落とした、前衛的リアリズム。
+
+      <div class="product-grid">
+        <a href="https://antonioli.eu/ja-jp/products/man-sunflower-clothing-jeans-5117-703" target="_blank" rel="noopener noreferrer" class="item-card">
+          <div class="item-image-box">
+            <img src="https://antonioli.eu/cdn/shop/files/S67LA0054M30066964-REGULAR-MAISONMARGIELA-Uomo-20261030155821_2.jpg" alt="SUNFLOWER Straight Jeans" class="item-image" loading="lazy">
+          </div>
+          <div class="item-top">
+            <span class="item-brand">SUNFLOWER</span>
+            <span class="item-discount">DIRECT PAGE</span>
+          </div>
+          <div class="item-name">Straight Leg Raw Denim Trousers</div>
+          <div class="item-bottom">
+            <div class="item-boutique">Antonioli (Milano) · 公式写真</div>
+            <div class="item-price-row">
+              <span class="price-current">約 ¥28,000</span>
+              <span class="price-orig">¥42,000</span>
+            </div>
+            <div class="view-btn">購入ページを開く ↗</div>
+          </div>
+        </a>
+
+        <a href="https://www.acrmtsm.jp/products/detail/8069" target="_blank" rel="noopener noreferrer" class="item-card">
+          <div class="item-image-box">
+            <img src="https://image.salesnauts.com/acrmtsm/img/jsXP7NWCEUxS.jpg" alt="SUGARHILL Double Knee Denim" class="item-image" loading="lazy">
+          </div>
+          <div class="item-top">
+            <span class="item-brand">SUGARHILL</span>
+            <span class="item-discount">残りわずか</span>
+          </div>
+          <div class="item-name">Classic Double Knee Denim Pants</div>
+          <div class="item-bottom">
+            <div class="item-boutique">ACRMTSM (石川) · 公式写真</div>
+            <div class="item-price-row">
+              <span class="price-current">¥41,800</span>
+              <span class="price-orig">定価公式</span>
+            </div>
+            <div class="view-btn">購入ページを開く ↗</div>
+          </div>
+        </a>
+
+        <a href="https://www.acrmtsm.jp/products/detail/79709" target="_blank" rel="noopener noreferrer" class="item-card">
+          <div class="item-image-box">
+            <img src="https://image.salesnauts.com/acrmtsm/img/XCtZcxTDWbXu.jpg" alt="SHINYAKOZUKA Classic Shirt" class="item-image" loading="lazy">
+          </div>
+          <div class="item-top">
+            <span class="item-brand">SHINYAKOZUKA</span>
+            <span class="item-discount">ラスト1点</span>
+          </div>
+          <div class="item-name">Ordinary Office Classic Shirt Grey</div>
+          <div class="item-bottom">
+            <div class="item-boutique">ACRMTSM (石川) · 公式写真</div>
+            <div class="item-price-row">
+              <span class="price-current">¥29,700</span>
+              <span class="price-orig">公式在庫</span>
+            </div>
+            <div class="view-btn">購入ページを開く ↗</div>
+          </div>
+        </a>
       </div>
-    </div>
+    </section>
 
-    <div class="product-grid">
-      <a href="https://whyareyouhere.jp/products/prisoner-drawstring-11" target="_blank" rel="noopener noreferrer" class="item-card">
-        <div class="item-image-box">
-          <img src="https://whyareyouhere.jp/cdn/shop/files/2A33AB5F-F2D5-43A9-B759-07D87FB75FDB.jpg" alt="Rick Owens DRKSHDW Prisoner" class="item-image" loading="lazy">
+    <!-- COLLECTION 03: ARCHITECTURAL OVERSIZED & TECHNO -->
+    <section class="editorial-group">
+      <div class="group-header">
+        <div>
+          <div class="group-num">COLLECTION // 03 · AVANT-GARDE TECH</div>
+          <h2 class="group-title">DARK POST-TECHNO<br>& HYPER-VOLUMES</h2>
         </div>
-        <div class="item-top">
-          <span class="item-brand">RICK OWENS DRKSHDW</span>
-          <span class="item-discount">30% OFF</span>
+        <div class="group-desc">
+          身体の輪郭を覆い隠す極端なボリュームと、近未来の機能美が交錯する次世代シルエット。Rick Owensの退廃的ドレープ、Needlesのアイコニックな立体裁断、Sacaiの精緻なドッキングが都市空間に唯一無二の存在感を放つ。
         </div>
-        <div class="item-name">PRISONER Heavy Drawstring Drop Pants</div>
-        <div class="item-bottom">
-          <div class="item-boutique">Why are you here? (大阪) · 公式写真</div>
-          <div class="item-price-row">
-            <span class="price-current">¥83,930</span>
-            <span class="price-orig">¥119,900</span>
-          </div>
-          <div class="view-btn">購入ページを開く ↗</div>
-        </div>
-      </a>
+      </div>
 
-      <a href="https://slamjam.com/products/converse-footwear-converse-onestar-drkshdw-black-j341083" target="_blank" rel="noopener noreferrer" class="item-card">
-        <div class="item-image-box">
-          <img src="https://slamjam.com/cdn/shop/files/Converse-Footwear-Low-ConverseOnestarDrkshdwBlack-A14796C-20251110112026_1.jpg" alt="Converse x DRKSHDW ONESTR" class="item-image" loading="lazy">
-        </div>
-        <div class="item-top">
-          <span class="item-brand">CONVERSE × DRKSHDW</span>
-          <span class="item-discount">50% OFF</span>
-        </div>
-        <div class="item-name">Rick Owens ONESTR Distressed Low Sneaker</div>
-        <div class="item-bottom">
-          <div class="item-boutique">Slam Jam (Italy) · 公式写真</div>
-          <div class="item-price-row">
-            <span class="price-current">約 ¥14,800</span>
-            <span class="price-orig">¥29,000</span>
+      <div class="product-grid">
+        <a href="https://whyareyouhere.jp/products/prisoner-drawstring-11" target="_blank" rel="noopener noreferrer" class="item-card">
+          <div class="item-image-box">
+            <img src="https://whyareyouhere.jp/cdn/shop/files/2A33AB5F-F2D5-43A9-B759-07D87FB75FDB.jpg" alt="Rick Owens DRKSHDW Prisoner" class="item-image" loading="lazy">
           </div>
-          <div class="view-btn">購入ページを開く ↗</div>
-        </div>
-      </a>
+          <div class="item-top">
+            <span class="item-brand">RICK OWENS DRKSHDW</span>
+            <span class="item-discount">30% OFF</span>
+          </div>
+          <div class="item-name">PRISONER Heavy Drawstring Drop Pants</div>
+          <div class="item-bottom">
+            <div class="item-boutique">Why are you here? (大阪) · 公式写真</div>
+            <div class="item-price-row">
+              <span class="price-current">¥83,930</span>
+              <span class="price-orig">¥119,900</span>
+            </div>
+            <div class="view-btn">購入ページを開く ↗</div>
+          </div>
+        </a>
 
-      <a href="https://www.svrn.com/products/sacai-denim-pants-in-brown" target="_blank" rel="noopener noreferrer" class="item-card">
-        <div class="item-image-box">
-          <img src="https://www.svrn.com/cdn/shop/files/denim-pants-in-brown-men-s-pants-sacai-svrn-chicago-1192487684.jpg" alt="SACAI Cargo Denim" class="item-image" loading="lazy">
-        </div>
-        <div class="item-top">
-          <span class="item-brand">SACAI</span>
-          <span class="item-discount">55% OFF</span>
-        </div>
-        <div class="item-name">Integrated Belted Denim Cargo Trousers</div>
-        <div class="item-bottom">
-          <div class="item-boutique">SVRN (Chicago) · 公式写真</div>
-          <div class="item-price-row">
-            <span class="price-current">約 ¥58,900</span>
-            <span class="price-orig">¥130,000</span>
+        <a href="https://slamjam.com/products/needles-clothing-hd-jean-memory-poly-taffeta-black-j353067" target="_blank" rel="noopener noreferrer" class="item-card">
+          <div class="item-image-box">
+            <img src="https://slamjam.com/cdn/shop/files/Needles-Clothing-Casual-HdJeanMemoryPolyTaffetaBlack-SX185101487468-20260421110507_1.jpg" alt="NEEDLES HD Jeans" class="item-image" loading="lazy">
           </div>
-          <div class="view-btn">購入ページを開く ↗</div>
+          <div class="item-top">
+            <span class="item-brand">NEEDLES</span>
+            <span class="item-discount">50% OFF</span>
+          </div>
+          <div class="item-name">H.D. Memory Poly Taffeta Pants Black</div>
+          <div class="item-bottom">
+            <div class="item-boutique">Slam Jam (Italy) · 公式写真</div>
+            <div class="item-price-row">
+              <span class="price-current">約 ¥22,800</span>
+              <span class="price-orig">¥45,000</span>
+            </div>
+            <div class="view-btn">購入ページを開く ↗</div>
+          </div>
+        </a>
+
+        <a href="https://www.svrn.com/products/sacai-denim-pants-in-brown" target="_blank" rel="noopener noreferrer" class="item-card">
+          <div class="item-image-box">
+            <img src="https://www.svrn.com/cdn/shop/files/denim-pants-in-brown-men-s-pants-sacai-svrn-chicago-1192487684.jpg" alt="SACAI Cargo Denim" class="item-image" loading="lazy">
+          </div>
+          <div class="item-top">
+            <span class="item-brand">SACAI</span>
+            <span class="item-discount">55% OFF</span>
+          </div>
+          <div class="item-name">Integrated Belted Denim Cargo Trousers</div>
+          <div class="item-bottom">
+            <div class="item-boutique">SVRN (Chicago) · 公式写真</div>
+            <div class="item-price-row">
+              <span class="price-current">約 ¥58,900</span>
+              <span class="price-orig">¥130,000</span>
+            </div>
+            <div class="view-btn">購入ページを開く ↗</div>
+          </div>
+        </a>
+      </div>
+    </section>
+
+  </div>
+
+  <!-- ==================== ISSUE 00 (2026.11.06 アーカイブ号) ==================== -->
+  <div id="issue-20261106" class="tab-panel">
+
+    <section class="editorial-group">
+      <div class="group-header">
+        <div>
+          <div class="group-num">PREVIEW EDITION // ISSUE 00</div>
+          <h2 class="group-title">FOUNDATIONAL<br>DARK ARCHIVE</h2>
         </div>
-      </a>
-    </div>
-  </section>
+        <div class="group-desc">
+          MODE STREET LAB 創刊準備号。NUBIAN、Slam Jamの初期ストックから、ヘビーフレンチテリーやコンバースコラボなど、ミニマルストリートの原点となる不朽のマスターピースをアーカイブ。
+        </div>
+      </div>
+
+      <div class="product-grid">
+        <a href="https://nubiantokyo.com/products/esfw26ja02012" target="_blank" rel="noopener noreferrer" class="item-card">
+          <div class="item-image-box">
+            <img src="https://nubiantokyo.com/cdn/shop/files/0004-01_85e722e8-9d88-4dc4-9861-324233da5d36.jpg" alt="ENTIRE STUDIOS Portal Jacket" class="item-image" loading="lazy">
+          </div>
+          <div class="item-top">
+            <span class="item-brand">ENTIRE STUDIOS</span>
+            <span class="item-discount">FW26最新</span>
+          </div>
+          <div class="item-name">Portal Shearling Heavy Jacket / Aloe</div>
+          <div class="item-bottom">
+            <div class="item-boutique">NUBIAN (東京) · 公式写真</div>
+            <div class="item-price-row">
+              <span class="price-current">¥156,200</span>
+              <span class="price-orig">公式取扱</span>
+            </div>
+            <div class="view-btn">購入ページを開く ↗</div>
+          </div>
+        </a>
+
+        <a href="https://slamjam.com/products/converse-footwear-converse-onestar-drkshdw-black-j341083" target="_blank" rel="noopener noreferrer" class="item-card">
+          <div class="item-image-box">
+            <img src="https://slamjam.com/cdn/shop/files/Converse-Footwear-Low-ConverseOnestarDrkshdwBlack-A14796C-20251110112026_1.jpg" alt="Converse x DRKSHDW ONESTR" class="item-image" loading="lazy">
+          </div>
+          <div class="item-top">
+            <span class="item-brand">CONVERSE × DRKSHDW</span>
+            <span class="item-discount">50% OFF</span>
+          </div>
+          <div class="item-name">Rick Owens ONESTR Distressed Low Sneaker</div>
+          <div class="item-bottom">
+            <div class="item-boutique">Slam Jam (Italy) · 公式写真</div>
+            <div class="item-price-row">
+              <span class="price-current">約 ¥14,800</span>
+              <span class="price-orig">¥29,000</span>
+            </div>
+            <div class="view-btn">購入ページを開く ↗</div>
+          </div>
+        </a>
+      </div>
+    </section>
+
+  </div>
 
   <!-- EDITORIAL FOOTER -->
   <footer class="site-footer">
     <div class="footer-statement">
-      <p>MODE STREET LAB は、ストリートカルチャーと前衛的デザイナーズアーカイブを偏愛するキュレーターによる独立系ファッションメディアです。並行輸入や二次流通における真贋不安を完全に排除するため、公認正規セレクトショップ・直営ブティックから直接発行される公式インボイス（購入証明）付きセール情報のみをリアルタイムで追跡・精査しています。</p>
+      <p>MODE STREET LAB は、ストリートカルチャーと前衛的デザイナーズアーカイブを偏愛するキュレーターによる独立系ファッションメディアです。並行輸入や二次流通における真贋不安を完全に排除するため、公認正規セレクトショップ・直営ブティック（SSENSE, FARFETCH, Antonioli, Slam Jam, NUBIAN, ACRMTSM, Why are you here?, HBX, SVRN）から直接発行される公式インボイス付きセール情報のみをリアルタイムで追跡・毎週金曜日に更新しています。</p>
     </div>
     <div class="footer-links">
       <a href="mailto:ojun3237@gmail.com">PARTNERSHIP : ojun3237@gmail.com</a>
@@ -578,12 +707,26 @@
   </div>
 
   <script>
-    // スマホでのタップによる確実な新規タブオープン保証
-    document.querySelectorAll('.item-card').forEach(function(card) {
-      card.addEventListener('touchend', function(e) {
-        // 通常のリンクタップを確実に行う
+    // 号数タブ切り替えスクリプト
+    function switchIssue(issueId) {
+      // 全パネル非表示
+      document.querySelectorAll('.tab-panel').forEach(function(panel) {
+        panel.classList.remove('active');
       });
-    });
+      // 全タブボタンのactive解除
+      document.querySelectorAll('.issue-tab-btn').forEach(function(btn) {
+        btn.classList.remove('active');
+      });
+
+      // 選択パネルとボタンをactive化
+      const targetPanel = document.getElementById(issueId);
+      if (targetPanel) {
+        targetPanel.classList.add('active');
+      }
+      if (event && event.currentTarget) {
+        event.currentTarget.classList.add('active');
+      }
+    }
   </script>
 
 </body>
