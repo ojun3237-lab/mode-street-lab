@@ -1,0 +1,328 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ARCHIVE SALE VAULT | Domestic & Streetwear Curation</title>
+  <style>
+    :root {
+      --bg-color: #0d0e12;
+      --card-bg: #16181f;
+      --border-color: #262933;
+      --text-main: #f0f2f5;
+      --text-muted: #8b92a5;
+      --accent: #3b82f6;
+      --accent-hover: #60a5fa;
+      --sale-tag: #ef4444;
+      --font-sans: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    }
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+    body {
+      background-color: var(--bg-color);
+      color: var(--text-main);
+      font-family: var(--font-sans);
+      line-height: 1.6;
+      padding: 0 16px 60px;
+    }
+    header {
+      max-width: 960px;
+      margin: 0 auto;
+      padding: 40px 0 24px;
+      border-bottom: 1px solid var(--border-color);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    .logo {
+      font-size: 1.25rem;
+      font-weight: 800;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: #fff;
+    }
+    .nav-tag {
+      font-size: 0.8rem;
+      padding: 4px 10px;
+      background: #1f232e;
+      border: 1px solid var(--border-color);
+      border-radius: 9999px;
+      color: var(--text-muted);
+    }
+    .hero {
+      max-width: 960px;
+      margin: 40px auto 32px;
+      text-align: left;
+    }
+    .hero h1 {
+      font-size: 2.2rem;
+      font-weight: 800;
+      letter-spacing: -0.02em;
+      line-height: 1.2;
+      margin-bottom: 12px;
+    }
+    .hero p {
+      color: var(--text-muted);
+      font-size: 1rem;
+      max-width: 640px;
+    }
+    .section-title {
+      max-width: 960px;
+      margin: 40px auto 20px;
+      font-size: 1.1rem;
+      font-weight: 700;
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+    .section-title::before {
+      content: "";
+      display: inline-block;
+      width: 4px;
+      height: 16px;
+      background: var(--accent);
+      border-radius: 2px;
+    }
+    .grid {
+      max-width: 960px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+      gap: 20px;
+    }
+    .card {
+      background: var(--card-bg);
+      border: 1px solid var(--border-color);
+      border-radius: 12px;
+      padding: 20px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      transition: transform 0.2s, border-color 0.2s;
+    }
+    .card:hover {
+      transform: translateY(-2px);
+      border-color: #3e4454;
+    }
+    .tag-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 12px;
+    }
+    .brand-tag {
+      font-size: 0.75rem;
+      font-weight: 700;
+      color: var(--accent-hover);
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+    .discount-badge {
+      font-size: 0.75rem;
+      font-weight: 700;
+      background: rgba(239, 68, 68, 0.15);
+      color: var(--sale-tag);
+      padding: 2px 8px;
+      border-radius: 4px;
+    }
+    .item-title {
+      font-size: 1.05rem;
+      font-weight: 600;
+      margin-bottom: 12px;
+      line-height: 1.4;
+    }
+    .price-box {
+      margin-top: auto;
+      padding-top: 14px;
+      border-top: 1px dashed var(--border-color);
+    }
+    .price-row {
+      display: flex;
+      align-items: baseline;
+      gap: 8px;
+      margin-bottom: 4px;
+    }
+    .current-price {
+      font-size: 1.25rem;
+      font-weight: 700;
+      color: #fff;
+    }
+    .orig-price {
+      font-size: 0.85rem;
+      color: var(--text-muted);
+      text-decoration: line-through;
+    }
+    .store-info {
+      font-size: 0.8rem;
+      color: var(--text-muted);
+      margin-bottom: 16px;
+    }
+    .action-btn {
+      display: block;
+      width: 100%;
+      text-align: center;
+      padding: 10px;
+      background: #1f232e;
+      color: #fff;
+      font-size: 0.85rem;
+      font-weight: 600;
+      text-decoration: none;
+      border-radius: 6px;
+      border: 1px solid var(--border-color);
+      transition: background 0.2s;
+    }
+    .action-btn:hover {
+      background: var(--accent);
+      border-color: var(--accent);
+    }
+    .about-box {
+      max-width: 960px;
+      margin: 60px auto 0;
+      padding: 24px;
+      background: #12141a;
+      border: 1px solid var(--border-color);
+      border-radius: 12px;
+    }
+    .about-box h3 {
+      font-size: 1rem;
+      font-weight: 700;
+      margin-bottom: 8px;
+    }
+    .about-box p {
+      color: var(--text-muted);
+      font-size: 0.9rem;
+      margin-bottom: 12px;
+    }
+    .about-links {
+      display: flex;
+      gap: 16px;
+      font-size: 0.85rem;
+    }
+    .about-links a {
+      color: var(--accent-hover);
+      text-decoration: none;
+    }
+    footer {
+      max-width: 960px;
+      margin: 40px auto 0;
+      text-align: center;
+      color: var(--text-muted);
+      font-size: 0.8rem;
+      border-top: 1px solid var(--border-color);
+      padding-top: 24px;
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <div class="logo">VAULT ARCHIVE</div>
+    <div class="nav-tag">Verified Official Retail Sales</div>
+  </header>
+
+  <section class="hero">
+    <h1>Domestic & High-Street<br>Curated Sale Vault</h1>
+    <p>国内外の正規セレクトショップ（Antonioli, SVRN, ACRMTSM, NUBIAN等）から、厳選されたドメスティックブランド・気鋭ストリートのセールアーカイブ情報をリアルタイムで発信しています。</p>
+  </section>
+
+  <div class="section-title">Latest Verified Sales</div>
+
+  <div class="grid">
+    <!-- Item 1 -->
+    <div class="card">
+      <div>
+        <div class="tag-row">
+          <span class="brand-tag">Maison MIHARA YASUHIRO</span>
+          <span class="discount-badge">45% OFF</span>
+        </div>
+        <div class="item-title">Vest Combined Bomber Jacket</div>
+      </div>
+      <div class="price-box">
+        <div class="price-row">
+          <span class="current-price">約 ¥101,000</span>
+          <span class="orig-price">¥184,000</span>
+        </div>
+        <div class="store-info">Boutique: Antonioli (Milano) · 正規店セール</div>
+        <a href="https://antonioli.eu/ja-jp/products/72411200-blk" target="_blank" rel="noopener" class="action-btn">アイテム詳細を見る →</a>
+      </div>
+    </div>
+
+    <!-- Item 2 -->
+    <div class="card">
+      <div>
+        <div class="tag-row">
+          <span class="brand-tag">POST ARCHIVE FACTION (PAF)</span>
+          <span class="discount-badge">48% OFF</span>
+        </div>
+        <div class="item-title">5.0 Technical Jacket Center</div>
+      </div>
+      <div class="price-box">
+        <div class="price-row">
+          <span class="current-price">約 ¥64,680</span>
+          <span class="orig-price">¥125,000</span>
+        </div>
+        <div class="store-info">Boutique: SVRN (Chicago) · 正規店セール</div>
+        <a href="https://svrn.com/products/post-archive-faction-5-0-technical-jacket" target="_blank" rel="noopener" class="action-btn">アイテム詳細を見る →</a>
+      </div>
+    </div>
+
+    <!-- Item 3 -->
+    <div class="card">
+      <div>
+        <div class="tag-row">
+          <span class="brand-tag">SUGARHILL</span>
+          <span class="discount-badge">30% OFF</span>
+        </div>
+        <div class="item-title">Crushed Modern Denim Pants</div>
+      </div>
+      <div class="price-box">
+        <div class="price-row">
+          <span class="current-price">¥53,900</span>
+          <span class="orig-price">¥77,000</span>
+        </div>
+        <div class="store-info">Boutique: ACRMTSM (Ishikawa) · 国内正規店</div>
+        <a href="https://www.acrmtsm.jp/products/sugarhill-modern-denim" target="_blank" rel="noopener" class="action-btn">アイテム詳細を見る →</a>
+      </div>
+    </div>
+
+    <!-- Item 4 -->
+    <div class="card">
+      <div>
+        <div class="tag-row">
+          <span class="brand-tag">Entire Studios</span>
+          <span class="discount-badge">50% OFF</span>
+        </div>
+        <div class="item-title">Heavy Thermal Zip Hoodie</div>
+      </div>
+      <div class="price-box">
+        <div class="price-row">
+          <span class="current-price">¥16,500</span>
+          <span class="orig-price">¥33,000</span>
+        </div>
+        <div class="store-info">Boutique: NUBIAN (Tokyo) · 国内正規店</div>
+        <a href="https://nubiantokyo.com" target="_blank" rel="noopener" class="action-btn">アイテム詳細を見る →</a>
+      </div>
+    </div>
+  </div>
+
+  <div class="about-box">
+    <h3>About This Curation Media</h3>
+    <p>当サイトは、ストリートファッション・デザイナーズアーカイブを愛好するキュレーターによる情報共有サイトです。偽物や非正規ルートを一切排除し、ヨーロッパやアメリカ、日本の公認正規セレクトショップ・直営ブティックの公式セール情報のみを精査して掲載しています。</p>
+    <div class="about-links">
+      <span>Curator: Jun Ishimoto (@shibenchun2)</span>
+      <a href="https://x.com/nishikori_dojin" target="_blank" rel="noopener">Official X (@nishikori_dojin)</a>
+      <a href="mailto:ojun3237@gmail.com">Contact / Partnership</a>
+    </div>
+  </div>
+
+  <footer>
+    <p>&copy; 2026 ARCHIVE SALE VAULT. All rights reserved.</p>
+  </footer>
+
+</body>
+</html>
