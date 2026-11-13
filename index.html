@@ -13,7 +13,7 @@
       --border: #1a1a1a;
       --border-focus: #333333;
       --text: #ffffff;
-      --text-sub: #777777;
+      --text-sub: #888888;
       --text-dim: #444444;
       --mono-tag: #ffffff;
     }
@@ -99,7 +99,6 @@
       border-top: 1px solid var(--border);
       padding-top: 60px;
     }
-
     .group-header {
       display: grid;
       grid-template-columns: 1fr;
@@ -108,96 +107,117 @@
     }
     @media (min-width: 768px) {
       .group-header {
-        grid-template-columns: 320px 1fr;
-        gap: 60px;
+        grid-template-columns: 1fr 1.6fr;
+        align-items: baseline;
       }
     }
-
     .group-num {
       font-size: 0.8rem;
-      letter-spacing: 0.25em;
-      text-transform: uppercase;
       color: var(--text-sub);
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
       margin-bottom: 12px;
     }
     .group-title {
-      font-size: 1.6rem;
+      font-size: clamp(1.8rem, 3.5vw, 2.8rem);
       font-weight: 700;
+      line-height: 1.1;
       letter-spacing: -0.02em;
       text-transform: uppercase;
-      line-height: 1.15;
     }
-
-    /* 200-CHARACTER EDITORIAL TEXT */
     .group-desc {
       font-size: 0.95rem;
       color: #aaaaaa;
       line-height: 1.8;
+      letter-spacing: 0.01em;
       border-left: 2px solid var(--border-focus);
       padding-left: 20px;
-      display: flex;
-      align-items: center;
     }
 
     /* PRODUCT GRID */
     .product-grid {
       display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
-      gap: 16px;
+      grid-template-columns: 1fr;
+      gap: 32px;
+    }
+    @media (min-width: 640px) {
+      .product-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
+    @media (min-width: 1024px) {
+      .product-grid {
+        grid-template-columns: repeat(3, 1fr);
+      }
     }
 
+    /* PRODUCT CARD */
     .item-card {
       background: var(--card-bg);
       border: 1px solid var(--border);
-      padding: 28px 24px;
+      padding: 20px;
       display: flex;
       flex-direction: column;
       justify-content: space-between;
-      min-height: 320px;
-      transition: border-color 0.2s, background-color 0.2s;
       text-decoration: none;
       color: inherit;
+      transition: all 0.3s ease;
+      position: relative;
     }
     .item-card:hover {
-      border-color: #555555;
-      background: #0d0d0d;
+      border-color: var(--border-focus);
+      background: #0f0f0f;
+    }
+
+    /* PRODUCT IMAGE BOX */
+    .item-image-box {
+      width: 100%;
+      aspect-ratio: 4/5;
+      background: #111111;
+      overflow: hidden;
+      margin-bottom: 20px;
+      border: 1px solid var(--border);
+      position: relative;
+    }
+    .item-image {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+      filter: grayscale(15%) contrast(105%);
+      transition: transform 0.5s ease, filter 0.5s ease;
+    }
+    .item-card:hover .item-image {
+      transform: scale(1.04);
+      filter: grayscale(0%) contrast(110%);
     }
 
     .item-top {
       display: flex;
       justify-content: space-between;
-      align-items: flex-start;
-      margin-bottom: 16px;
+      align-items: center;
+      margin-bottom: 12px;
     }
     .item-brand {
-      font-size: 0.8rem;
+      font-size: 0.85rem;
       font-weight: 700;
-      letter-spacing: 0.15em;
+      letter-spacing: 0.12em;
       text-transform: uppercase;
-      color: #ffffff;
     }
     .item-discount {
       font-size: 0.75rem;
+      background: var(--mono-tag);
+      color: var(--bg);
+      padding: 3px 8px;
       font-weight: 700;
-      letter-spacing: 0.1em;
-      padding: 2px 8px;
-      border: 1px solid #ffffff;
-      color: #ffffff;
-      text-transform: uppercase;
+      letter-spacing: 0.05em;
     }
-
     .item-name {
-      font-size: 1.1rem;
-      font-weight: 700;
+      font-size: 1.05rem;
+      font-weight: 500;
       line-height: 1.35;
-      letter-spacing: -0.01em;
-      margin-bottom: 24px;
-    }
-
-    .item-bottom {
-      margin-top: auto;
-      border-top: 1px solid var(--border);
-      padding-top: 18px;
+      margin-bottom: 20px;
+      min-height: 2.7em;
     }
     .item-boutique {
       font-size: 0.75rem;
@@ -299,6 +319,9 @@
 
     <div class="product-grid">
       <a href="https://antonioli.eu/ja-jp/products/72411200-blk" target="_blank" rel="noopener" class="item-card">
+        <div class="item-image-box">
+          <img src="https://antonioli.eu/cdn/shop/files/4x5_3_2.jpg" alt="MIHARA YASUHIRO Vest Combined MA-1" class="item-image" loading="lazy">
+        </div>
         <div class="item-top">
           <span class="item-brand">MIHARA YASUHIRO</span>
           <span class="item-discount">45% OFF</span>
@@ -314,6 +337,9 @@
       </a>
 
       <a href="https://www.acrmtsm.jp/products/sugarhill-modern-denim" target="_blank" rel="noopener" class="item-card">
+        <div class="item-image-box">
+          <img src="https://images.unsplash.com/photo-1541099649105-f69ad21f3246?auto=format&fit=crop&w=800&q=80" alt="SUGARHILL Crushed Modern Denim" class="item-image" loading="lazy">
+        </div>
         <div class="item-top">
           <span class="item-brand">SUGARHILL</span>
           <span class="item-discount">30% OFF</span>
@@ -329,6 +355,9 @@
       </a>
 
       <a href="https://www.acrmtsm.jp" target="_blank" rel="noopener" class="item-card">
+        <div class="item-image-box">
+          <img src="https://images.unsplash.com/photo-1602810318383-e386cc2a3ccf?auto=format&fit=crop&w=800&q=80" alt="SHINYA KOZUKA Shirt" class="item-image" loading="lazy">
+        </div>
         <div class="item-top">
           <span class="item-brand">SHINYA KOZUKA</span>
           <span class="item-discount">30% OFF</span>
@@ -359,6 +388,9 @@
 
     <div class="product-grid">
       <a href="https://nubiantokyo.com" target="_blank" rel="noopener" class="item-card">
+        <div class="item-image-box">
+          <img src="https://images.unsplash.com/photo-1556905055-8f358a7a47b2?auto=format&fit=crop&w=800&q=80" alt="ENTIRE STUDIOS Hoodie" class="item-image" loading="lazy">
+        </div>
         <div class="item-top">
           <span class="item-brand">ENTIRE STUDIOS</span>
           <span class="item-discount">50% OFF</span>
@@ -374,6 +406,9 @@
       </a>
 
       <a href="https://slamjam.com" target="_blank" rel="noopener" class="item-card">
+        <div class="item-image-box">
+          <img src="https://images.unsplash.com/photo-1552902865-b72c031ac5ea?auto=format&fit=crop&w=800&q=80" alt="ENTIRE STUDIOS Sweatpants" class="item-image" loading="lazy">
+        </div>
         <div class="item-top">
           <span class="item-brand">ENTIRE STUDIOS</span>
           <span class="item-discount">40% OFF</span>
@@ -389,6 +424,9 @@
       </a>
 
       <a href="https://svrn.com" target="_blank" rel="noopener" class="item-card">
+        <div class="item-image-box">
+          <img src="https://images.unsplash.com/photo-1509967419530-da38b4704bc6?auto=format&fit=crop&w=800&q=80" alt="THUG CLUB Armor Hoodie" class="item-image" loading="lazy">
+        </div>
         <div class="item-top">
           <span class="item-brand">THUG CLUB</span>
           <span class="item-discount">SPECIAL SALE</span>
@@ -419,6 +457,9 @@
 
     <div class="product-grid">
       <a href="https://svrn.com/products/post-archive-faction-5-0-technical-jacket" target="_blank" rel="noopener" class="item-card">
+        <div class="item-image-box">
+          <img src="https://images.unsplash.com/photo-1548883354-7622d03aca27?auto=format&fit=crop&w=800&q=80" alt="PAF 5.0 Technical Jacket" class="item-image" loading="lazy">
+        </div>
         <div class="item-top">
           <span class="item-brand">POST ARCHIVE FACTION</span>
           <span class="item-discount">48% OFF</span>
@@ -434,6 +475,9 @@
       </a>
 
       <a href="https://slamjam.com" target="_blank" rel="noopener" class="item-card">
+        <div class="item-image-box">
+          <img src="https://images.unsplash.com/photo-1517445312882-bc9910d016b7?auto=format&fit=crop&w=800&q=80" alt="PAF 4.0 Technical Trousers" class="item-image" loading="lazy">
+        </div>
         <div class="item-top">
           <span class="item-brand">POST ARCHIVE FACTION</span>
           <span class="item-discount">40% OFF</span>
@@ -449,6 +493,9 @@
       </a>
 
       <a href="https://whyareyouhere.jp" target="_blank" rel="noopener" class="item-card">
+        <div class="item-image-box">
+          <img src="https://images.unsplash.com/photo-1544441893-675973e31985?auto=format&fit=crop&w=800&q=80" alt="NAMESAKE Anorak" class="item-image" loading="lazy">
+        </div>
         <div class="item-top">
           <span class="item-brand">NAMESAKE</span>
           <span class="item-discount">SPECIAL SALE</span>
@@ -471,7 +518,6 @@
       <p>MODE STREET LAB は、ストリートカルチャーと前衛的デザイナーズアーカイブを偏愛するキュレーターによる独立系ファッションメディアです。並行輸入や二次流通における真贋不安を完全に排除するため、公認正規セレクトショップ・直営ブティックから直接発行される公式インボイス（購入証明）付きセール情報のみをリアルタイムで追跡・精査しています。</p>
     </div>
     <div class="footer-links">
-      <a href="https://x.com/nishikori_dojin" target="_blank" rel="noopener">OFFICIAL X : @nishikori_dojin</a>
       <a href="mailto:ojun3237@gmail.com">PARTNERSHIP : ojun3237@gmail.com</a>
       <a href="https://github.com/ojun3237-lab" target="_blank" rel="noopener">SOURCE : @ojun3237-lab</a>
     </div>
